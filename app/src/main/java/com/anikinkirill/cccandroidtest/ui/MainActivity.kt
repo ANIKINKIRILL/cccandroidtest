@@ -2,6 +2,7 @@ package com.anikinkirill.cccandroidtest.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -10,7 +11,10 @@ import com.anikinkirill.cccandroidtest.Constants
 import com.anikinkirill.cccandroidtest.R
 import com.anikinkirill.cccandroidtest.model.Estimate
 import com.anikinkirill.cccandroidtest.model.Person
+import com.anikinkirill.cccandroidtest.util.Resource.Status.*
+import com.anikinkirill.cccandroidtest.util.showProgressBar
 import com.google.gson.GsonBuilder
+import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
@@ -31,8 +35,6 @@ class MainActivity : AppCompatActivity() {
         json?.let {
             populateDatabase(it)
         } ?: Toast.makeText(this, "Cannot parse JSON", Toast.LENGTH_LONG).show()
-
-        makeFragmentTransaction(MainFragment())
 
     }
 
@@ -77,11 +79,24 @@ class MainActivity : AppCompatActivity() {
         val person = gson.fromJson(json.getJSONObject("person").toString(), Person::class.java)
         val estimate = gson.fromJson(json.getJSONObject("estimate").toString(), Estimate::class.java)
 
+        progress_bar.visibility = View.VISIBLE
+
         mainViewModel.insertPerson(person).observe(this) {
-            if(it > 0) {
-                Log.d(TAG, "populateDatabase: person is successfully inserted")
-            }else{
-                Log.d(TAG, "populateDatabase: error inserting person...")
+            it?.let { resource ->  
+                when(resource.status) {
+                    is SUCCESS -> {
+                        Log.d(TAG, "populateDatabase: person is successfully inserted")
+                        showProgressBar(false, progress_bar)
+                        makeFragmentTransaction(MainFragment())
+                    }
+                    is ERROR -> {
+                        showProgressBar(false, progress_bar)
+                        Log.d(TAG, "populateDatabase: error inserting person...")
+                    }
+                    is LOADING -> {
+                        showProgressBar(true, progress_bar)
+                    }
+                }
             }
         }
 
