@@ -84,4 +84,7 @@ dependencies {
     def reactivestreams_version = "1.1.1"
     implementation "android.arch.lifecycle:reactivestreams:$reactivestreams_version"
 
+    // Room with RxJava
+    implementation "androidx.room:room-rxjava2:2.2.5"
+
 }
