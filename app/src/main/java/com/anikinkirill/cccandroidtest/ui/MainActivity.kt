@@ -36,6 +36,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     *  Simulate getting json from server. In this case use
+     *  Gson library [populateDatabase]
+     *  In real world project should use Retrofit
+     *  with GsonConverterLibrary
+     *
+     *  @param json     json from Rest Api
+     */
+
     private fun getJson(json: String) : JSONObject? {
         return try {
             JSONObject(json)
@@ -44,6 +53,24 @@ class MainActivity : AppCompatActivity() {
             null
         }
     }
+
+    /**
+     * Populate local database with data from json
+     * Get objects from json and try inserting them to database
+     * If object cannot be inserted (some error happened), application
+     * will know about it
+     *
+     * See [com.anikinkirill.cccandroidtest.repositories.PersonRepository]
+     * See [com.anikinkirill.cccandroidtest.repositories.EstimateRepository]
+     *
+     * When error happens, value is -1. So we check it here down below
+     * Otherwise, returns successful result
+     *
+     * Regarding Google Best Practices we should use Resource wrappers
+     * to understand state of process (LOADING, SUCCESS or ERROR)
+     *
+     * @param json     json to be extracted
+     */
 
     private fun populateDatabase(json: JSONObject) {
         val gson = GsonBuilder().create()
