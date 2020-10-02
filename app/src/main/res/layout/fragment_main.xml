@@ -4,6 +4,10 @@
 
 <data>
     <variable
+        name="fullname"
+        type="String" />
+    
+    <variable
         name="person"
         type="com.anikinkirill.cccandroidtest.model.Person" />
 
@@ -150,7 +154,7 @@
             app:layout_constraintEnd_toStartOf="@+id/contactValue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/requester"
-            android:text="@{person.first_name}"
+            android:text="@{fullname}"
             tools:text="Joseph Sham" />
 
         <TextView
@@ -189,7 +193,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             tools:text="Joseph Sham"
-            android:text="@{person.first_name}"
+            android:text="@{fullname}"
             app:layout_constraintBottom_toTopOf="@+id/contact"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/createdValue"
@@ -210,7 +214,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             tools:text="Joseph Sham"
-            android:text="@{person.first_name}"
+            android:text="@{fullname}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/requesterValue"

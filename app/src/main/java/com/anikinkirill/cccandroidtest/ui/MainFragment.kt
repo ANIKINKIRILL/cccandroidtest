@@ -41,6 +41,7 @@ class MainFragment : Fragment() {
     private fun setPersonData(person: Person) {
         Log.d(TAG, "setPersonData: ${person.first_name} ${person.last_name}")
         binding.person = person
+        binding.fullname = "${person.first_name} ${person.last_name}"
     }
 
     private fun setEstimateData(estimate: Estimate) {
