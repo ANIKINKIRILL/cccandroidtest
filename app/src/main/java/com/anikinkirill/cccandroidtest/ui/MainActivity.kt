@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.anikinkirill.cccandroidtest.Constants
 import com.anikinkirill.cccandroidtest.R
@@ -26,12 +27,12 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        subscribeObservers()
-
         val json = getJson(Constants.json)
         json?.let {
             populateDatabase(it)
         } ?: Toast.makeText(this, "Cannot parse JSON", Toast.LENGTH_LONG).show()
+
+        makeFragmentTransaction(MainFragment())
 
     }
 
@@ -53,19 +54,8 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.insertEstimate(estimate)
     }
 
-    private fun subscribeObservers() {
-        mainViewModel.getPersonById(Constants.personId).observe(this) {
-            it?.let {
-                Log.d(TAG, "subscribeObservers: ${it.email}")
-            }
-        }
-
-        mainViewModel.getEstimateById(Constants.estimateId).observe(this) {
-            it?.let {
-                Log.d(TAG, "subscribeObservers: ${it.company}")
-            }
-        }
-
+    private fun makeFragmentTransaction(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment).commit()
     }
 
 }

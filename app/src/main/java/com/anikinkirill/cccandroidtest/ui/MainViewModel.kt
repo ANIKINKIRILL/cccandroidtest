@@ -28,4 +28,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getEstimateById(id: String) : LiveData<Estimate> = estimateRepository.getEstimateById(id)
 
+    fun getEstimateByContactId(contactId: String) : LiveData<Estimate> = estimateRepository.getEstimateByContactId(contactId)
+
 }

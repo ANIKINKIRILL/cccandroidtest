@@ -24,6 +24,8 @@ class EstimateRepository constructor(private val context: Context) {
 
     fun getEstimateById(id: String) : LiveData<Estimate> = estimateDao.getEstimateById(id)
 
+    fun getEstimateByContactId(contactId: String) : LiveData<Estimate> = estimateDao.getEstimateByContactId(contactId)
+
     suspend fun insertEstimate(estimate: Estimate) {
         estimateDao.insertEstimate(estimate)
     }

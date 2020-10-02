@@ -14,6 +14,9 @@ interface EstimateDao {
     @Query("SELECT * FROM estimate_table WHERE id = :id")
     fun getEstimateById(id: String) : LiveData<Estimate>
 
+    @Query("SELECT * FROM estimate_table WHERE contact = :contactId")
+    fun getEstimateByContactId(contactId: String) : LiveData<Estimate>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertEstimate(estimate: Estimate)
 

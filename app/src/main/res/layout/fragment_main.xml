@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/personAvatar"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_baseline_account_circle_24" />
+
+        <TextView
+            android:id="@+id/estimateCompany"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/estimateAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/personAvatar"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="asdsadasadasdasdasddasdadasdadasdadasdasdasd" />
+
+        <TextView
+            android:id="@+id/estimateAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/estDetails"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/personAvatar"
+            app:layout_constraintTop_toBottomOf="@+id/estimateCompany"
+            tools:text="TextfasfafdasdaddsadadadadasdadsadasdView" />
+
+        <TextView
+            android:id="@+id/estDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/est_details"
+            app:layout_constraintBottom_toTopOf="@+id/dividerLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/personAvatar" />
+
+        <View
+            android:id="@+id/dividerLine"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintBottom_toTopOf="@id/estNumber"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/estDetails" />
+
+        <TextView
+            android:id="@+id/estNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/est_number"
+            app:layout_constraintBottom_toTopOf="@+id/estNumberValue"
+            app:layout_constraintEnd_toStartOf="@+id/revisionNumber"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dividerLine" />
+
+        <TextView
+            android:id="@+id/estNumberValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/created"
+            app:layout_constraintEnd_toStartOf="@+id/revisionNumberValue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/estNumber"
+            tools:text="32" />
+
+        <TextView
+            android:id="@+id/created"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/created"
+            app:layout_constraintBottom_toTopOf="@+id/createdValue"
+            app:layout_constraintEnd_toStartOf="@+id/createdBy"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/estNumberValue" />
+
+        <TextView
+            android:id="@+id/createdValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/requester"
+            app:layout_constraintEnd_toStartOf="@+id/createdByValue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/created"
+            tools:text="2020-08-22" />
+
+        <TextView
+            android:id="@+id/requester"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/requester"
+            app:layout_constraintBottom_toTopOf="@+id/requesterValue"
+            app:layout_constraintEnd_toStartOf="@+id/contact"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createdValue" />
+
+        <TextView
+            android:id="@+id/requesterValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/contactValue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/requester"
+            tools:text="Joseph Sham" />
+
+        <TextView
+            android:id="@+id/revisionNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/revision_number"
+            app:layout_constraintBottom_toTopOf="@+id/revisionNumberValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/estNumber"
+            app:layout_constraintTop_toBottomOf="@+id/dividerLine" />
+
+        <TextView
+            android:id="@+id/revisionNumberValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="2"
+            app:layout_constraintBottom_toTopOf="@+id/createdBy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/estNumberValue"
+            app:layout_constraintTop_toBottomOf="@+id/revisionNumber" />
+
+        <TextView
+            android:id="@+id/createdBy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/created_by"
+            app:layout_constraintBottom_toTopOf="@+id/createdByValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/created"
+            app:layout_constraintTop_toBottomOf="@+id/revisionNumberValue" />
+
+        <TextView
+            android:id="@+id/createdByValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Joseph Sham"
+            app:layout_constraintBottom_toTopOf="@+id/contact"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/createdValue"
+            app:layout_constraintTop_toBottomOf="@+id/createdBy" />
+
+        <TextView
+            android:id="@+id/contact"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/contact"
+            app:layout_constraintBottom_toTopOf="@+id/contactValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/requester"
+            app:layout_constraintTop_toBottomOf="@+id/createdByValue" />
+
+        <TextView
+            android:id="@+id/contactValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Joseph Sham"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/requesterValue"
+            app:layout_constraintTop_toBottomOf="@+id/contact" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
