@@ -57,7 +57,14 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "populateDatabase: error inserting person...")
             }
         }
-        mainViewModel.insertEstimate(estimate)
+
+        mainViewModel.insertEstimate(estimate).observe(this) {
+            if(it > 0) {
+                Log.d(TAG, "populateDatabase: estimate is successfully inserted")
+            }else{
+                Log.d(TAG, "populateDatabase: error inserting estimate...")
+            }
+        }
     }
 
     private fun makeFragmentTransaction(fragment: Fragment) {

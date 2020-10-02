@@ -8,6 +8,7 @@ import androidx.room.Query
 import com.anikinkirill.cccandroidtest.model.Estimate
 import com.anikinkirill.cccandroidtest.model.Person
 import io.reactivex.Flowable
+import io.reactivex.Single
 
 @Dao
 interface EstimateDao {
@@ -19,6 +20,6 @@ interface EstimateDao {
     fun getEstimateByContactId(contactId: String) : Flowable<Estimate>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertEstimate(estimate: Estimate)
+    fun insertEstimate(estimate: Estimate) : Single<Long>
 
 }

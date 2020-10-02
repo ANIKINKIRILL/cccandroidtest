@@ -21,8 +21,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         return LiveDataReactiveStreams.fromPublisher(personRepository.insertPerson(person))
     }
 
-    fun insertEstimate(estimate: Estimate) = viewModelScope.launch(Dispatchers.IO) {
-        estimateRepository.insertEstimate(estimate)
+    fun insertEstimate(estimate: Estimate) : LiveData<Int> {
+        return LiveDataReactiveStreams.fromPublisher(estimateRepository.insertEstimate(estimate))
     }
 
     fun getPersonById(id: String) : LiveData<Person> = personRepository.getPersonById(id)

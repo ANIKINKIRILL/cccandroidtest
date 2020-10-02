@@ -44,8 +44,20 @@ class EstimateRepository constructor(private val context: Context) {
         )
     }
 
-    suspend fun insertEstimate(estimate: Estimate) {
-        estimateDao.insertEstimate(estimate)
+    fun insertEstimate(estimate: Estimate) : Flowable<Int> {
+        return estimateDao
+            .insertEstimate(estimate)
+            .map {
+                it.toInt()
+            }
+            .onErrorReturn {
+                -1
+            }
+            .map {
+                it
+            }
+            .subscribeOn(Schedulers.io())
+            .toFlowable()
     }
 
 }
