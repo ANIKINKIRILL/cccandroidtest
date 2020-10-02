@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import com.anikinkirill.cccandroidtest.model.Person
 import com.anikinkirill.cccandroidtest.persistence.AppDatabase
+import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -40,8 +41,20 @@ class PersonRepository constructor(private val context: Context) {
         )
     }
 
-    suspend fun insertPerson(person: Person) {
-        personDao.insertPerson(person)
+    fun insertPerson(person: Person) : Flowable<Int> {
+        return personDao
+            .insertPerson(person)
+            .map {
+                it.toInt()
+            }
+            .onErrorReturn {
+                -1
+            }
+            .map {
+                it
+            }
+            .subscribeOn(Schedulers.io())
+            .toFlowable()
     }
 
 }

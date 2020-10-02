@@ -59,10 +59,10 @@ class MainFragment : Fragment() {
                     mainViewModel.getEstimateByContactId(person.id).observe(viewLifecycleOwner) {
                         it?.let { estimate ->
                             setEstimateData(estimate)
-                        }
+                        } ?: Log.d(TAG, "MainFragment: estimate is null")
                     }
                 }
-            }
+            } ?: Log.d(TAG, "MainFragment: person is null")
         }
     }
 

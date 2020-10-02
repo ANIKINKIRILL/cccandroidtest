@@ -50,7 +50,13 @@ class MainActivity : AppCompatActivity() {
         val person = gson.fromJson(json.getJSONObject("person").toString(), Person::class.java)
         val estimate = gson.fromJson(json.getJSONObject("estimate").toString(), Estimate::class.java)
 
-        mainViewModel.insertPerson(person)
+        mainViewModel.insertPerson(person).observe(this) {
+            if(it > 0) {
+                Log.d(TAG, "populateDatabase: person is successfully inserted")
+            }else{
+                Log.d(TAG, "populateDatabase: error inserting person...")
+            }
+        }
         mainViewModel.insertEstimate(estimate)
     }
 

@@ -2,20 +2,9 @@ package com.anikinkirill.cccandroidtest.model
 
 import androidx.annotation.NonNull
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity(
-    tableName = "estimate_table",
-    foreignKeys = [
-        ForeignKey(
-            entity = Person::class,
-            parentColumns = ["id"],
-            childColumns = ["created_by"],
-            onDelete = ForeignKey.CASCADE
-        )
-    ]
-)
+@Entity(tableName = "estimate_table")
 data class Estimate(
     @PrimaryKey
     @NonNull
