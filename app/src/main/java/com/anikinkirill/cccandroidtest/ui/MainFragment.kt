@@ -44,7 +44,11 @@ class MainFragment : Fragment() {
         // TODO("SET ESTIMATE DATA TO UI WIDGETS")
     }
 
-    private fun setErrorUi() {
+    private fun setErrorUserUi() {
+
+    }
+
+    private fun setErrorEstimateUi() {
 
     }
 
@@ -53,12 +57,17 @@ class MainFragment : Fragment() {
             it?.let { person ->
                 if(person.id == "-1") {
                     Log.d(TAG, "subscribeObservers: ERROR...")
-                    setErrorUi()
+                    setErrorUserUi()
                 }else{
                     setPersonData(person)
                     mainViewModel.getEstimateByContactId(person.id).observe(viewLifecycleOwner) {
                         it?.let { estimate ->
-                            setEstimateData(estimate)
+                            if(estimate.id == "-1") {
+                                Log.d(TAG, "subscribeObservers: ERROR...")
+                                setErrorEstimateUi()
+                            } else {
+                                setEstimateData(estimate)
+                            }
                         } ?: Log.d(TAG, "MainFragment: estimate is null")
                     }
                 }
